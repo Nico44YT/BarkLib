@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "barklib",
+  "version": "${version}",
+  "name": "BarkLib",
+  "description": "",
+  "authors": [
+    "Nico_44"
+  ],
+  "contact": {},
+  "license": "GPL-3.0",
+  "icon": "assets/barklib/icon.png",
+  "environment": "*",
+  "accessWidener": "barklib.accesswidener",
+  "entrypoints": {
+    "client": [
+      
+    ],
+    "main": [
+      "nico.barklib.BarkLib"
+    ]
+  },
+  "mixins": [
+    "barklib.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

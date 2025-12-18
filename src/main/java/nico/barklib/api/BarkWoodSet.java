@@ -1,5 +1,13 @@
 package nico.barklib.api;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.Pair;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class BarkWoodSet {
     private final Identifier id;
 
@@ -26,7 +34,7 @@ public class BarkWoodSet {
     private final Item chestBoatItem;
     private final List<BarkWoodSetExtension> extensions;
 
-    protected BarkWoodSet(Identifier id, Block plankBlock, Block slabBlock, Block stairsBlock, Block door, Block trapdoor, Block fence, Block fenceGate, Block button, Block pressurePlate, Block logBlock, Block strippedLogBlock, Block woodBlock, Block strippedWoodBlock, Pair<Block, Block> signPair, Item boatItem, Item chestBoatItem, BarkWoodSetExtension... extensions) {
+    protected BarkWoodSet(Identifier id, Block plankBlock, Block slabBlock, Block stairsBlock, Block door, Block trapdoor, Block fence, Block fenceGate, Block button, Block pressurePlate, Block logBlock, Block strippedLogBlock, Block woodBlock, Block strippedWoodBlock, Pair<Block, Block> signPair, Item boatItem, Item chestBoatItem, List<BarkWoodSetExtension> extensions) {
         this.id = id;
     
         this.plankBlock = plankBlock;
@@ -47,15 +55,18 @@ public class BarkWoodSet {
         this.woodBlock = woodBlock;
         this.strippedWoodBlock = strippedWoodBlock;
 
+        this.signPair = signPair;
+
         this.boatItem = boatItem;
         this.chestBoatItem = chestBoatItem;
 
-        this.extensions = extensions;
+        this.extensions = new ArrayList<>();
+        this.extensions.addAll(extensions);
 
     }
 
     public static class Helper {
-        private Identifier id;
+        private final Identifier id;
 
         private Block plankBlock;
         private Block slabBlock;

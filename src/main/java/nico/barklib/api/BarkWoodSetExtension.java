@@ -1,5 +1,7 @@
 package nico.barklib.api;
 
+import net.minecraft.util.Identifier;
+
 public interface BarkWoodSetExtension {
-    public Identifier getExtensionId();
+    Identifier getExtensionId();
 }
