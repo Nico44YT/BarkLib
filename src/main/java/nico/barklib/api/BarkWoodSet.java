@@ -41,6 +41,7 @@ public record BarkWoodSet(Identifier id, Map<Identifier, ItemConvertible> map) {
         return this.id;
     }
 
+    //region / * Getters * /
     public Optional<ItemConvertible> getEntry(Identifier id) {
         return Optional.ofNullable(this.map.get(id));
     }
@@ -126,99 +127,113 @@ public record BarkWoodSet(Identifier id, Map<Identifier, ItemConvertible> map) {
     public Item getChestBoat() {
         return (Item)this.map.get(CHEST_BOAT);
     }
+    //endregion
 
+    //region / * Helper * /
+    public boolean containsEntry(ItemConvertible entry) {
+        return map().containsValue(entry);
+    }
 
-    public static class Helper {
+    public boolean containsKey(Identifier id) {
+        return map().containsKey(id);
+    }
+
+    public boolean contains(Identifier id, ItemConvertible entry) {
+        return map().containsKey(id) && map().containsValue(entry);
+    }
+    //endregion
+
+    public static class Factory {
         private final Identifier id;
 
         private HashMap<Identifier, ItemConvertible> map;
 
-        public static Helper of(Identifier id) {
-            return new Helper(id);
+        public static Factory of(Identifier id) {
+            return new Factory(id);
         }
 
-        private Helper(Identifier id) {
+        private Factory(Identifier id) {
             this.id = id;
             this.map = new HashMap<>();
         }
 
-        public Helper setPlanks(Block plankBlock) {
+        public Factory setPlanks(Block plankBlock) {
             this.map.put(PLANKS, plankBlock);
             return this;
         }
 
-        public Helper setSlab(Block slabBlock) {
+        public Factory setSlab(Block slabBlock) {
             this.map.put(SLAB, slabBlock);
             return this;
         }
 
-        public Helper setStairs(Block stairsBlock) {
+        public Factory setStairs(Block stairsBlock) {
             this.map.put(STAIRS, stairsBlock);
             return this;
         }
 
         
-        public Helper setDoor(Block door) {
+        public Factory setDoor(Block door) {
             this.map.put(DOOR, door);
             return this;
         }
 
-        public Helper setTrapdoor(Block trapdoor) {
+        public Factory setTrapdoor(Block trapdoor) {
             this.map.put(TRAPDOOR, trapdoor);
             return this;
         }
 
 
-        public Helper setFence(Block fence, Block fenceGate) {
+        public Factory setFence(Block fence, Block fenceGate) {
             this.map.put(FENCE, fence);
             this.map.put(FENCE_GATE, fenceGate);
             return this;
         }
 
-        public Helper setButton(Block button) {
+        public Factory setButton(Block button) {
             this.map.put(BUTTON, button);
             return this;
         }
 
-        public Helper setPressurePlate(Block pressurePlate) {
+        public Factory setPressurePlate(Block pressurePlate) {
             this.map.put(PRESSURE_PLATE, pressurePlate);
             return this;
         }
 
 
-        public Helper setLog(Block logBlock, Block strippedLogBlock) {
+        public Factory setLog(Block logBlock, Block strippedLogBlock) {
             this.map.put(LOG, logBlock);
             this.map.put(STRIPPED_LOG, strippedLogBlock);
             return this;
         }
 
-        public Helper setWood(Block woodBlock, Block strippedWoodBlock) {
+        public Factory setWood(Block woodBlock, Block strippedWoodBlock) {
             this.map.put(WOOD, woodBlock);
             this.map.put(STRIPPED_WOOD, strippedWoodBlock);
             return this;
         }
 
         
-        public Helper setSign(Block sign, Block wallSign) {
+        public Factory setSign(Block sign, Block wallSign) {
             this.map.put(SIGN, sign);
             this.map.put(WALL_SIGN, wallSign);
             return this;
         }
 
-        public Helper setHangingSign(Block hangingSign, Block wallHangingSign) {
+        public Factory setHangingSign(Block hangingSign, Block wallHangingSign) {
             this.map.put(HANGING_SIGN, hangingSign);
             this.map.put(WALL_HANGING_SIGN, wallHangingSign);
             return this;
         }
 
 
-        public Helper setBoat(Item boatItem, Item chestBoatItem) {
+        public Factory setBoat(Item boatItem, Item chestBoatItem) {
             this.map.put(BOAT, boatItem);
             this.map.put(CHEST_BOAT, chestBoatItem);
             return this;
         }
 
-        public Helper set(Identifier id, ItemConvertible convertible) {
+        public Factory set(Identifier id, ItemConvertible convertible) {
             this.map.put(id, convertible);
             return this;
         }
