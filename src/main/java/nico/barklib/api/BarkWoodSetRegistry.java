@@ -26,6 +26,10 @@ public class BarkWoodSetRegistry {
         return map.values().stream();
     }
 
+    public static Stream<Identifier> keyStream() {
+        return map.keySet().stream();
+    }
+
     public static Stream<Map.Entry<Identifier, BarkWoodSet>> entryStream() {
         return map.entrySet().stream();
     }
