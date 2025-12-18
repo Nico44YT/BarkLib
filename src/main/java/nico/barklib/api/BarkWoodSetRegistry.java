@@ -14,6 +14,12 @@ public class BarkWoodSetRegistry {
         map.put(woodSet.id(), woodSet);
     }
 
+    public static void registerWoodSets(BarkWoodSet... woodSets) {
+        for (BarkWoodSet woodSet : woodSets) {
+            map.put(woodSet.id(), woodSet);
+        }
+    }
+
     public static Optional<BarkWoodSet> maybeGetWoodSet(Identifier id) {
         return Optional.ofNullable(map.get(id));
     }

@@ -5,8 +5,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import nico.barklib.api.BarkWoodSet;
-
-import static nico.barklib.api.BarkWoodSetRegistry.registerWoodSet;
+import nico.barklib.api.BarkWoodSetRegistry;
 
 public class BarkLib implements ModInitializer {
 
@@ -14,7 +13,7 @@ public class BarkLib implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        registerWoodSet(
+        BarkWoodSetRegistry.registerWoodSets(
                 BarkWoodSet.Factory.of(vanillaId("oak"))
                         .setPlanks(Blocks.OAK_PLANKS)
                         .setSlab(Blocks.OAK_SLAB)
@@ -29,10 +28,7 @@ public class BarkLib implements ModInitializer {
                         .setSign(Blocks.OAK_SIGN, Blocks.OAK_WALL_SIGN)
                         .setHangingSign(Blocks.OAK_HANGING_SIGN, Blocks.OAK_WALL_HANGING_SIGN)
                         .setBoat(Items.OAK_BOAT, Items.OAK_CHEST_BOAT)
-                        .build()
-        );
-
-        registerWoodSet(
+                        .build(),
                 BarkWoodSet.Factory.of(vanillaId("spruce"))
                         .setPlanks(Blocks.SPRUCE_PLANKS)
                         .setSlab(Blocks.SPRUCE_SLAB)
@@ -47,10 +43,7 @@ public class BarkLib implements ModInitializer {
                         .setSign(Blocks.SPRUCE_SIGN, Blocks.SPRUCE_WALL_SIGN)
                         .setHangingSign(Blocks.SPRUCE_HANGING_SIGN, Blocks.SPRUCE_WALL_HANGING_SIGN)
                         .setBoat(Items.SPRUCE_BOAT, Items.SPRUCE_CHEST_BOAT)
-                        .build()
-        );
-
-        registerWoodSet(
+                        .build(),
                 BarkWoodSet.Factory.of(vanillaId("birch"))
                         .setPlanks(Blocks.BIRCH_PLANKS)
                         .setSlab(Blocks.BIRCH_SLAB)
@@ -65,10 +58,7 @@ public class BarkLib implements ModInitializer {
                         .setSign(Blocks.BIRCH_SIGN, Blocks.BIRCH_WALL_SIGN)
                         .setHangingSign(Blocks.BIRCH_HANGING_SIGN, Blocks.BIRCH_WALL_HANGING_SIGN)
                         .setBoat(Items.BIRCH_BOAT, Items.BIRCH_CHEST_BOAT)
-                        .build()
-        );
-
-        registerWoodSet(
+                        .build(),
                 BarkWoodSet.Factory.of(vanillaId("jungle"))
                         .setPlanks(Blocks.JUNGLE_PLANKS)
                         .setSlab(Blocks.JUNGLE_SLAB)
@@ -83,10 +73,7 @@ public class BarkLib implements ModInitializer {
                         .setSign(Blocks.JUNGLE_SIGN, Blocks.JUNGLE_WALL_SIGN)
                         .setHangingSign(Blocks.JUNGLE_HANGING_SIGN, Blocks.JUNGLE_WALL_HANGING_SIGN)
                         .setBoat(Items.JUNGLE_BOAT, Items.JUNGLE_CHEST_BOAT)
-                        .build()
-        );
-
-        registerWoodSet(
+                        .build(),
                 BarkWoodSet.Factory.of(vanillaId("acacia"))
                         .setPlanks(Blocks.ACACIA_PLANKS)
                         .setSlab(Blocks.ACACIA_SLAB)
@@ -101,10 +88,7 @@ public class BarkLib implements ModInitializer {
                         .setSign(Blocks.ACACIA_SIGN, Blocks.ACACIA_WALL_SIGN)
                         .setHangingSign(Blocks.ACACIA_HANGING_SIGN, Blocks.ACACIA_WALL_HANGING_SIGN)
                         .setBoat(Items.ACACIA_BOAT, Items.ACACIA_CHEST_BOAT)
-                        .build()
-        );
-
-        registerWoodSet(
+                        .build(),
                 BarkWoodSet.Factory.of(vanillaId("dark_oak"))
                         .setPlanks(Blocks.DARK_OAK_PLANKS)
                         .setSlab(Blocks.DARK_OAK_SLAB)
@@ -119,10 +103,7 @@ public class BarkLib implements ModInitializer {
                         .setSign(Blocks.DARK_OAK_SIGN, Blocks.DARK_OAK_WALL_SIGN)
                         .setHangingSign(Blocks.DARK_OAK_HANGING_SIGN, Blocks.DARK_OAK_WALL_HANGING_SIGN)
                         .setBoat(Items.DARK_OAK_BOAT, Items.DARK_OAK_CHEST_BOAT)
-                        .build()
-        );
-
-        registerWoodSet(
+                        .build(),
                 BarkWoodSet.Factory.of(vanillaId("mangrove"))
                         .setPlanks(Blocks.MANGROVE_PLANKS)
                         .setSlab(Blocks.MANGROVE_SLAB)
@@ -137,10 +118,7 @@ public class BarkLib implements ModInitializer {
                         .setSign(Blocks.MANGROVE_SIGN, Blocks.MANGROVE_WALL_SIGN)
                         .setHangingSign(Blocks.MANGROVE_HANGING_SIGN, Blocks.MANGROVE_WALL_HANGING_SIGN)
                         .setBoat(Items.MANGROVE_BOAT, Items.MANGROVE_CHEST_BOAT)
-                        .build()
-        );
-
-        registerWoodSet(
+                        .build(),
                 BarkWoodSet.Factory.of(vanillaId("cherry"))
                         .setPlanks(Blocks.CHERRY_PLANKS)
                         .setSlab(Blocks.CHERRY_SLAB)
@@ -155,10 +133,7 @@ public class BarkLib implements ModInitializer {
                         .setSign(Blocks.CHERRY_SIGN, Blocks.CHERRY_WALL_SIGN)
                         .setHangingSign(Blocks.CHERRY_HANGING_SIGN, Blocks.CHERRY_WALL_HANGING_SIGN)
                         .setBoat(Items.CHERRY_BOAT, Items.CHERRY_CHEST_BOAT)
-                        .build()
-        );
-
-        registerWoodSet(
+                        .build(),
                 BarkWoodSet.Factory.of(vanillaId("bamboo"))
                         .setPlanks(Blocks.BAMBOO_PLANKS)
                         .setSlab(Blocks.BAMBOO_SLAB)
@@ -175,10 +150,7 @@ public class BarkLib implements ModInitializer {
                         .set(vanillaId("mosaic"), Blocks.BAMBOO_MOSAIC)
                         .set(vanillaId("mosaic_slab"), Blocks.BAMBOO_MOSAIC_SLAB)
                         .set(vanillaId("mosaic_stairs"), Blocks.BAMBOO_MOSAIC_STAIRS)
-                        .build()
-        );
-
-        registerWoodSet(
+                        .build(),
                 BarkWoodSet.Factory.of(vanillaId("crimson"))
                         .setPlanks(Blocks.CRIMSON_PLANKS)
                         .setSlab(Blocks.CRIMSON_SLAB)
@@ -192,10 +164,7 @@ public class BarkLib implements ModInitializer {
                         .setWood(Blocks.CRIMSON_HYPHAE, Blocks.STRIPPED_CRIMSON_HYPHAE)
                         .setSign(Blocks.CRIMSON_SIGN, Blocks.CRIMSON_WALL_SIGN)
                         .setHangingSign(Blocks.CRIMSON_HANGING_SIGN, Blocks.CRIMSON_WALL_HANGING_SIGN)
-                        .build()
-        );
-
-        registerWoodSet(
+                        .build(),
                 BarkWoodSet.Factory.of(vanillaId("warped"))
                         .setPlanks(Blocks.WARPED_PLANKS)
                         .setSlab(Blocks.WARPED_SLAB)
