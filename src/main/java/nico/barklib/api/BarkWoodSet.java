@@ -31,6 +31,9 @@ public record BarkWoodSet(Identifier id, Map<Identifier, ItemConvertible> map) {
     public static final Identifier SIGN = Identifier.of(Identifier.DEFAULT_NAMESPACE, "sign");
     public static final Identifier WALL_SIGN = Identifier.of(Identifier.DEFAULT_NAMESPACE, "wall_sign");
 
+    public static final Identifier HANGING_SIGN = Identifier.of(Identifier.DEFAULT_NAMESPACE, "hanging_sign");
+    public static final Identifier WALL_HANGING_SIGN = Identifier.of(Identifier.DEFAULT_NAMESPACE, "wall_hanging_sign");
+
     public static final Identifier BOAT = Identifier.of(Identifier.DEFAULT_NAMESPACE, "boat");
     public static final Identifier CHEST_BOAT = Identifier.of(Identifier.DEFAULT_NAMESPACE, "chest_boat");
 
@@ -105,6 +108,14 @@ public record BarkWoodSet(Identifier id, Map<Identifier, ItemConvertible> map) {
 
     public Block getWallSign() {
         return (Block)this.map.get(WALL_SIGN);
+    }
+
+    public Block getHangingSign() {
+        return (Block)this.map.get(HANGING_SIGN);
+    }
+
+    public Block getWallHangingSign() {
+        return (Block)this.map.get(WALL_HANGING_SIGN);
     }
 
 
@@ -194,10 +205,21 @@ public record BarkWoodSet(Identifier id, Map<Identifier, ItemConvertible> map) {
             return this;
         }
 
+        public Helper setHangingSign(Block hangingSign, Block wallHangingSign) {
+            this.map.put(HANGING_SIGN, hangingSign);
+            this.map.put(WALL_HANGING_SIGN, wallHangingSign);
+            return this;
+        }
+
 
         public Helper setBoat(Item boatItem, Item chestBoatItem) {
             this.map.put(BOAT, boatItem);
             this.map.put(CHEST_BOAT, chestBoatItem);
+            return this;
+        }
+
+        public Helper set(Identifier id, ItemConvertible convertible) {
+            this.map.put(id, convertible);
             return this;
         }
 

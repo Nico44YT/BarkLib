@@ -3,6 +3,7 @@ package nico.barklib;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.Identifier;
+import nico.barklib.api.BarkWoodSetRegistry;
 
 public class BarkLib implements ModInitializer {
 
@@ -10,7 +11,7 @@ public class BarkLib implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        
+        BarkWoodSetRegistry.initVanilla();
     }
 
     public static Identifier id(String name) {
