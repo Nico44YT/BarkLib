@@ -2,96 +2,125 @@ package nico.barklib.api;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Pair;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
-public class BarkWoodSet {
-    private final Identifier id;
+public record BarkWoodSet(Identifier id, Map<Identifier, ItemConvertible> map) {
+    public static final Identifier PLANKS = Identifier.of(Identifier.DEFAULT_NAMESPACE, "planks");
+    public static final Identifier SLAB = Identifier.of(Identifier.DEFAULT_NAMESPACE, "slab");
+    public static final Identifier STAIRS = Identifier.of(Identifier.DEFAULT_NAMESPACE, "stairs");
 
-    private final Block plankBlock;
-    private final Block slabBlock;
-    private final Block stairsBlock;
+    public static final Identifier FENCE = Identifier.of(Identifier.DEFAULT_NAMESPACE, "fence");
+    public static final Identifier FENCE_GATE = Identifier.of(Identifier.DEFAULT_NAMESPACE, "planks");
 
-    private final Block door;
-    private final Block trapdoor;
+    public static final Identifier DOOR = Identifier.of(Identifier.DEFAULT_NAMESPACE, "door");
+    public static final Identifier TRAPDOOR = Identifier.of(Identifier.DEFAULT_NAMESPACE, "trapdoor");
 
-    private final Block fence;
-    private final Block fenceGate;
+    public static final Identifier BUTTON = Identifier.of(Identifier.DEFAULT_NAMESPACE, "button");
+    public static final Identifier PRESSURE_PLATE = Identifier.of(Identifier.DEFAULT_NAMESPACE, "pressure_plate");
 
-    private final Block button;
-    private final Block pressurePlate;
+    public static final Identifier LOG = Identifier.of(Identifier.DEFAULT_NAMESPACE, "log");
+    public static final Identifier STRIPPED_LOG = Identifier.of(Identifier.DEFAULT_NAMESPACE, "stripped_log");
+    public static final Identifier WOOD = Identifier.of(Identifier.DEFAULT_NAMESPACE, "wood");
+    public static final Identifier STRIPPED_WOOD = Identifier.of(Identifier.DEFAULT_NAMESPACE, "stripped_wood");
 
-    private final Block logBlock;
-    private final Block strippedLogBlock;
-    private final Block woodBlock;
-    private final Block strippedWoodBlock;
-    private final Pair<Block, Block> signPair;
+    public static final Identifier SIGN = Identifier.of(Identifier.DEFAULT_NAMESPACE, "sign");
+    public static final Identifier WALL_SIGN = Identifier.of(Identifier.DEFAULT_NAMESPACE, "wall_sign");
 
-    private final Item boatItem;
-    private final Item chestBoatItem;
-    private final List<BarkWoodSetExtension> extensions;
+    public static final Identifier BOAT = Identifier.of(Identifier.DEFAULT_NAMESPACE, "boat");
+    public static final Identifier CHEST_BOAT = Identifier.of(Identifier.DEFAULT_NAMESPACE, "chest_boat");
 
-    protected BarkWoodSet(Identifier id, Block plankBlock, Block slabBlock, Block stairsBlock, Block door, Block trapdoor, Block fence, Block fenceGate, Block button, Block pressurePlate, Block logBlock, Block strippedLogBlock, Block woodBlock, Block strippedWoodBlock, Pair<Block, Block> signPair, Item boatItem, Item chestBoatItem, List<BarkWoodSetExtension> extensions) {
-        this.id = id;
-    
-        this.plankBlock = plankBlock;
-        this.slabBlock = slabBlock;
-        this.stairsBlock = stairsBlock;
-    
-        this.door = door;
-        this.trapdoor = trapdoor;
-
-        this.fence = fence;
-        this.fenceGate = fenceGate;
-
-        this.button = button;
-        this.pressurePlate = pressurePlate;
-
-        this.logBlock = logBlock;
-        this.strippedLogBlock = strippedLogBlock;
-        this.woodBlock = woodBlock;
-        this.strippedWoodBlock = strippedWoodBlock;
-
-        this.signPair = signPair;
-
-        this.boatItem = boatItem;
-        this.chestBoatItem = chestBoatItem;
-
-        this.extensions = new ArrayList<>();
-        this.extensions.addAll(extensions);
-
+    public Identifier getId() {
+        return this.id;
     }
+
+    public Optional<ItemConvertible> getEntry(Identifier id) {
+        return Optional.ofNullable(this.map.get(id));
+    }
+
+    public Block getPlanks() {
+        return (Block)this.map.get(PLANKS);
+    }
+
+    public Block getSlab() {
+        return (Block)this.map.get(SLAB);
+    }
+
+    public Block getStairs() {
+        return (Block)this.map.get(STAIRS);
+    }
+
+
+    public Block getFence() {
+        return (Block)this.map.get(FENCE);
+    }
+
+    public Block getFenceGate() {
+        return (Block)this.map.get(FENCE_GATE);
+    }
+
+
+    public Block getDoor() {
+        return (Block)this.map.get(DOOR);
+    }
+
+    public Block getTrapdoor() {
+        return (Block)this.map.get(TRAPDOOR);
+    }
+
+
+    public Block getButton() {
+        return (Block)this.map.get(BUTTON);
+    }
+
+    public Block getPressurePlate() {
+        return (Block)this.map.get(PRESSURE_PLATE);
+    }
+
+
+    public Block getLog() {
+        return (Block)this.map.get(LOG);
+    }
+
+    public Block getStrippedLog() {
+        return (Block)this.map.get(STRIPPED_LOG);
+    }
+
+    public Block getWood() {
+        return (Block)this.map.get(WOOD);
+    }
+
+    public Block getStrippedWood() {
+        return (Block)this.map.get(STRIPPED_WOOD);
+    }
+
+
+    public Block getSign() {
+        return (Block)this.map.get(SIGN);
+    }
+
+    public Block getWallSign() {
+        return (Block)this.map.get(WALL_SIGN);
+    }
+
+
+    public Item getBoat() {
+        return (Item)this.map.get(BOAT);
+    }
+
+    public Item getChestBoat() {
+        return (Item)this.map.get(CHEST_BOAT);
+    }
+
 
     public static class Helper {
         private final Identifier id;
 
-        private Block plankBlock;
-        private Block slabBlock;
-        private Block stairsBlock;
-
-        private Block door;
-        private Block trapdoor;
-
-        private Block fence;
-        private Block fenceGate;
-
-        private Block button;
-        private Block pressurePlate;
-
-        private Block logBlock;
-        private Block strippedLogBlock;
-        private Block woodBlock;
-        private Block strippedWoodBlock;
-
-        private Pair<Block, Block> signPair;
-        //private Block hangingsignPair;
-
-        private Item boatItem;
-        private Item chestBoatItem;
-        private List<BarkWoodSetExtension> extensions;
+        private HashMap<Identifier, ItemConvertible> map;
 
         public static Helper of(Identifier id) {
             return new Helper(id);
@@ -99,134 +128,81 @@ public class BarkWoodSet {
 
         private Helper(Identifier id) {
             this.id = id;
-            this.extensions = new ArrayList<>();
+            this.map = new HashMap<>();
         }
 
-
-        public Helper setPlank(Block plankBlock) {
-            this.plankBlock = plankBlock;
+        public Helper setPlanks(Block plankBlock) {
+            this.map.put(PLANKS, plankBlock);
             return this;
         }
 
         public Helper setSlab(Block slabBlock) {
-            this.slabBlock = slabBlock;
+            this.map.put(SLAB, slabBlock);
             return this;
         }
 
         public Helper setStairs(Block stairsBlock) {
-            this.stairsBlock = stairsBlock;
+            this.map.put(STAIRS, stairsBlock);
             return this;
         }
 
         
         public Helper setDoor(Block door) {
-            this.door = door;
+            this.map.put(DOOR, door);
             return this;
         }
 
         public Helper setTrapdoor(Block trapdoor) {
-            this.trapdoor = trapdoor;
+            this.map.put(TRAPDOOR, trapdoor);
             return this;
         }
 
 
-        public Helper setFence(Block fence) {
-            this.fence = fence;
+        public Helper setFence(Block fence, Block fenceGate) {
+            this.map.put(FENCE, fence);
+            this.map.put(FENCE_GATE, fenceGate);
             return this;
         }
-
-        public Helper setFenceGate(Block fenceGate) {
-            this.fenceGate = fenceGate;
-            return this;
-        }
-
 
         public Helper setButton(Block button) {
-            this.button = button;
+            this.map.put(BUTTON, button);
             return this;
         }
 
         public Helper setPressurePlate(Block pressurePlate) {
-            this.pressurePlate = pressurePlate;
+            this.map.put(PRESSURE_PLATE, pressurePlate);
             return this;
         }
 
 
-        public Helper setLog(Block logBlock) {
-            this.logBlock = logBlock;
+        public Helper setLog(Block logBlock, Block strippedLogBlock) {
+            this.map.put(LOG, logBlock);
+            this.map.put(STRIPPED_LOG, strippedLogBlock);
             return this;
         }
 
-        public Helper setStrippedLog(Block strippedLogBlock) {
-            this.strippedLogBlock = strippedLogBlock;
-            return this;
-        }
-
-        public Helper setWood(Block woodBlock) {
-            this.woodBlock = woodBlock;
-            return this;
-        }
-
-        public Helper setStrippedWood(Block strippedWoodBlock) {
-            this.strippedWoodBlock = strippedWoodBlock;
+        public Helper setWood(Block woodBlock, Block strippedWoodBlock) {
+            this.map.put(WOOD, woodBlock);
+            this.map.put(STRIPPED_WOOD, strippedWoodBlock);
             return this;
         }
 
         
         public Helper setSign(Block sign, Block wallSign) {
-            this.signPair = new Pair<>(sign, wallSign);
+            this.map.put(SIGN, sign);
+            this.map.put(WALL_SIGN, wallSign);
             return this;
         }
-
-        /*
-        public Helper setHangingSign(Block hangingSign, Block wallHangingSign) {
-            this.hangingSignPair = new Pair<>(hangingSign, wallHangingSign);
-            return this;
-        }
-        */
 
 
         public Helper setBoat(Item boatItem, Item chestBoatItem) {
-            this.boatItem = boatItem;
-            this.chestBoatItem = chestBoatItem;
-            return this;
-        }
-
-        public Helper addExtension(BarkWoodSetExtension extension) {
-            this.extensions.add(extension);
+            this.map.put(BOAT, boatItem);
+            this.map.put(CHEST_BOAT, chestBoatItem);
             return this;
         }
 
         public BarkWoodSet build() {
-            return new BarkWoodSet(
-                id,
-
-                plankBlock,
-                slabBlock,
-                stairsBlock,
-
-                door,
-                trapdoor,
-
-                fence,
-                fenceGate,
-
-                button,
-                pressurePlate,
-
-                logBlock,
-                strippedLogBlock,
-                woodBlock,
-                strippedWoodBlock,
-
-                signPair,
-                //hangingSignPair,
-
-                boatItem,
-                chestBoatItem,
-
-                extensions
-            );
+            return new BarkWoodSet(id, map);
         }
     }
 }
