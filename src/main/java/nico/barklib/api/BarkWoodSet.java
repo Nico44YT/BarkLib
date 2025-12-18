@@ -20,14 +20,38 @@ public class BarkWoodSet {
     private final Block strippedLogBlock;
     private final Block woodBlock;
     private final Block strippedWoodBlock;
-    private final Block signBlock;
+    private final Pair<Block, Block> signPair;
 
     private final Item boatItem;
     private final Item chestBoatItem;
     private final List<BarkWoodSetExtension> extensions;
 
-    public BarkWoodSet(Identifier id) {
+    protected BarkWoodSet(Identifier id, Block plankBlock, Block slabBlock, Block stairsBlock, Block door, Block trapdoor, Block fence, Block fenceGate, Block button, Block pressurePlate, Block logBlock, Block strippedLogBlock, Block woodBlock, Block strippedWoodBlock, Pair<Block, Block> signPair, Item boatItem, Item chestBoatItem, BarkWoodSetExtension... extensions) {
         this.id = id;
+    
+        this.plankBlock = plankBlock;
+        this.slabBlock = slabBlock;
+        this.stairsBlock = stairsBlock;
+    
+        this.door = door;
+        this.trapdoor = trapdoor;
+
+        this.fence = fence;
+        this.fenceGate = fenceGate;
+
+        this.button = button;
+        this.pressurePlate = pressurePlate;
+
+        this.logBlock = logBlock;
+        this.strippedLogBlock = strippedLogBlock;
+        this.woodBlock = woodBlock;
+        this.strippedWoodBlock = strippedWoodBlock;
+
+        this.boatItem = boatItem;
+        this.chestBoatItem = chestBoatItem;
+
+        this.extensions = extensions;
+
     }
 
     public static class Helper {
@@ -51,8 +75,8 @@ public class BarkWoodSet {
         private Block woodBlock;
         private Block strippedWoodBlock;
 
-        private Pair<Block, Block> signBlock;
-        //private Block hangingSignBlock;
+        private Pair<Block, Block> signPair;
+        //private Block hangingsignPair;
 
         private Item boatItem;
         private Item chestBoatItem;
@@ -139,9 +163,16 @@ public class BarkWoodSet {
 
         
         public Helper setSign(Block sign, Block wallSign) {
-            this.sign = new Pair<>(sign, wallSign);
+            this.signPair = new Pair<>(sign, wallSign);
             return this;
         }
+
+        /*
+        public Helper setHangingSign(Block hangingSign, Block wallHangingSign) {
+            this.hangingSignPair = new Pair<>(hangingSign, wallHangingSign);
+            return this;
+        }
+        */
 
 
         public Helper setBoat(Item boatItem, Item chestBoatItem) {
@@ -153,6 +184,38 @@ public class BarkWoodSet {
         public Helper addExtension(BarkWoodSetExtension extension) {
             this.extensions.add(extension);
             return this;
+        }
+
+        public BarkWoodSet build() {
+            return new BarkWoodSet(
+                id,
+
+                plankBlock,
+                slabBlock,
+                stairsBlock,
+
+                door,
+                trapdoor,
+
+                fence,
+                fenceGate,
+
+                button,
+                pressurePlate,
+
+                logBlock,
+                strippedLogBlock,
+                woodBlock,
+                strippedWoodBlock,
+
+                signPair,
+                //hangingSignPair,
+
+                boatItem,
+                chestBoatItem,
+
+                extensions
+            );
         }
     }
 }
