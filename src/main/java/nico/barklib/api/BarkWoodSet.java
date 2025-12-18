@@ -141,6 +141,10 @@ public record BarkWoodSet(Identifier id, Map<Identifier, ItemConvertible> map) {
     public boolean contains(Identifier id, ItemConvertible entry) {
         return map().containsKey(id) && map().containsValue(entry);
     }
+
+    public static Optional<BarkWoodSet> getSetFromEntry(ItemConvertible entry) {
+        return BarkWoodSetRegistry.stream().filter(set -> set.containsEntry(entry)).findFirst();
+    }
     //endregion
 
     public static class Factory {
